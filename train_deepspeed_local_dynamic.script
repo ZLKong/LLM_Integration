@@ -1,0 +1,60 @@
+#!/bin/bash
+#SBATCH --account=XXX 
+#SBATCH -c 64
+#SBATCH --gres=gpu:2
+#SBATCH -t 0-72:00
+#SBATCH --mem=1000G
+#SBATCH -o sbatch_logs/train_ours-dynamic_0.15_remove_norm_%j.out  
+#SBATCH -e sbatch_logs/train_ours-dynamic_0.15_remove_norm_%j.err
+
+
+
+
+deepspeed --include localhost:0,1 --master_port=20005 ./src/train.py \
+  --training_mode full \
+  --deepspeed ./config/zero_stage2_config.json \
+  --model_name_or_path /XXX/pretrain_models/llama-160m \
+  --output_dir "/XXX/pretrain_models/results/5llm_dynamic_1epoch_015threshold_remove_norm" \
+  --model_max_length 2048 \
+  --logging_steps 1 \
+  --save_strategy steps \
+  --save_steps 250 \
+  --save_total_limit 1 \
+  --evaluation_strategy steps \
+  --per_device_eval_batch_size 1 \
+  --logging_strategy steps \
+  --do_train \
+  --do_eval \
+  --bf16 True \
+  --tf32 True \
+  --warmup_ratio 0.008 \
+  --lr_scheduler_type cosine \
+  --dataset_name "/XXX/pretrain_models/final_dataset_fuse_five_0_7,/XXX/pretrain_models/final_dataset_fuse_five_1_7,/XXX/pretrain_models/final_dataset_fuse_five_2_7,/XXX/pretrain_models/final_dataset_fuse_five_3_7,/XXX/pretrain_models/final_dataset_fuse_five_4_7,/XXX/pretrain_models/final_dataset_fuse_five_5_7,/XXX/pretrain_models/final_dataset_fuse_five_6_7,/XXX/pretrain_models/final_dataset_fuse_five_7_7" \
+  --per_device_train_batch_size 2 \
+  --gradient_accumulation_steps 16 \
+  --num_train_epochs 1 \
+  --eval_steps 500 \
+  --optim adamw_torch \
+  --adam_beta1 0.9 \
+  --adam_beta2 0.99 \
+  --learning_rate 1e-5 \
+  --weight_decay 0.01 \
+  --max_grad_norm 1.0 \
+  --seed 42 \
+  --gradient_checkpointing True \
+  --use_flash_attn False \
+  --flash_attn_transformers True \
+  --report_to tensorboard \
+  --do_distill \
+  --distill_with_ref_model True \
+  --distill_with_aligned_model_0 True \
+  --distill_with_aligned_model_1 True \
+  --distill_with_aligned_model_2 True \
+  --distill_with_aligned_model_3 True \
+  --distill_loss_type "ce" \
+  --distill_teacher_temperature 1.0 \
+  --lm_loss_weight 0.9 \
+  --distill_greater_as_gt True \
+  --distill_greater_as_gt_type "hard" \
+  --dataloader_num_workers 10 \
+  --remove_unused_columns False 
