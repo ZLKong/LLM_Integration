@@ -1,5 +1,6 @@
 # Enabling Flexible Multi-LLM Integration for Scalable Knowledge Aggregation
 
+[arXiv](https://arxiv.org/pdf/2505.23844) 
 
 <p align="center">
   <img src="./framework_fusionx.png" width=60%> <br>
