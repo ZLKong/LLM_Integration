@@ -24,7 +24,7 @@ pip3 install torch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 --index-url http
 pip install -r requirements.txt
 ```
 ### 📚 Data Processing
-Please follow the detailed guidelines in https://github.com/fanqiwan/FuseAI 
+Please follow the detailed guidelines in https://github.com/fanqiwan/FuseAI/tree/main/FuseLLM
 
 ### ⭐ Training
 
