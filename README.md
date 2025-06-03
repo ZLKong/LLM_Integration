@@ -1,13 +1,13 @@
+<p align="center">
+  <img src="./framework_fusionx.png" width=60%> <br>
+</p>
+
+
 # Enabling Flexible Multi-LLM Integration for Scalable Knowledge Aggregation
 
 [arXiv](https://arxiv.org/pdf/2505.23844) 
 
 Existing methods for merging LLMs are memory-intensive and prone to task interference. We propose a framework that adaptively selects and fuses knowledge from multiple LLMs, enabling more scalable, stable, and memory-efficient integration—reducing interference by up to 50% compared to prior approaches.
-
-<p align="center">
-  <img src="./framework_fusionx.png" width=60%> <br>
-</p>
-
 
 
 ## 💻 Usage
