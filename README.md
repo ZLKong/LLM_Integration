@@ -70,13 +70,10 @@ bash scripts/eval/bbh.sh
 ## Citation
 If you find our work useful in your research, please consider citing:
 ```
-@misc{kong2025enablingflexiblemultillmintegration,
-      title={Enabling Flexible Multi-LLM Integration for Scalable Knowledge Aggregation}, 
-      author={Zhenglun Kong and Zheng Zhan and Shiyue Hou and Yifan Gong and Xin Meng and Pengwei Sui and Peiyan Dong and Xuan Shen and Zifeng Wang and Pu Zhao and Hao Tang and Stratis Ioannidis and Yanzhi Wang},
-      year={2025},
-      eprint={2505.23844},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2505.23844}, 
+@article{kong2025enabling,
+  title={Enabling Flexible Multi-LLM Integration for Scalable Knowledge Aggregation},
+  author={Kong, Zhenglun and Zhan, Zheng and Hou, Shiyue and Gong, Yifan and Meng, Xin and Sui, Pengwei and Dong, Peiyan and Shen, Xuan and Wang, Zifeng and Zhao, Pu and others},
+  journal={arXiv preprint arXiv:2505.23844},
+  year={2025}
 }
 ```
